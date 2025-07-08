@@ -27,7 +27,6 @@ This repository provides example source code for the paper **"Applying SSVEP BCI
 Below is an overview of the MTSGNN architecture. For a detailed explanation, please refer to our paper.
 <figure style="text-align: center;">
   <img src="./figs/architecture.png" alt="architecture">
-  <figcaption>MTSGNN architecture</figcaption>
 </figure>
 
 ## How to Run
