@@ -33,9 +33,9 @@ print(f"Using model: {model_name}")
 # Dataset and results path
 current_path = Path(os.path.dirname(os.path.abspath(__file__)))
 dataset_path = current_path / 'example_dataset.mat'
-model_folder_path = current_path / 'model'
+checkpoint_folder_path = current_path / 'checkpoint'
 results_folder_path = current_path / 'results'
-for folder in [model_folder_path, results_folder_path]:
+for folder in [checkpoint_folder_path, results_folder_path]:
     if not os.path.exists(folder):
         os.makedirs(folder)
 results_path = results_folder_path / f'results_{model_name}.txt'
@@ -101,8 +101,8 @@ for fold_i in range(k_split):
     # Initialize
     model = network(nb_classes=num_classes, Chans=chans, Samples=samples)
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    model_path = model_folder_path / f'{model_name}_fold_{fold_i + 1}.h5'
-    checkpointer = ModelCheckpoint(filepath=model_path, verbose=0,
+    checkpoint_path = checkpoint_folder_path / f'{model_name}_fold_{fold_i + 1}.h5'
+    checkpointer = ModelCheckpoint(filepath=checkpoint_path, verbose=0,
                                    save_best_only=True, monitor='val_accuracy', mode='max')
     
     # Train
